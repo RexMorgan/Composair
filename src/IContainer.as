@@ -1,7 +1,9 @@
-package IocSpike
+package
 {
+	import org.spicefactory.lib.reflect.ClassInfo;
+	
 	public interface IContainer
 	{
-		function GetInstance(pluginType : Type) : Object;
+		function getInstance(pluginType : ClassInfo) : Object;
 	}
 }
