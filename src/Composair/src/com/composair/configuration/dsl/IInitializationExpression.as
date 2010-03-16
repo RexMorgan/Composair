@@ -1,6 +1,6 @@
-package Configuration.DSL
+package com.composair.configuration.dsl
 {
-	import flash.utils.Dictionary;
+	import com.composair.HashTable;
 	
 	import org.spicefactory.lib.reflect.ClassInfo;
 	
@@ -8,6 +8,7 @@ package Configuration.DSL
 	{
 		function For(pluginType : ClassInfo) : GenericFamilyExpression;
 		function Register(pluginType : ClassInfo, concreteType : ClassInfo) : void;
-		function buildGraph() : Dictionary;
+		function RegisterInstance(pluginType : ClassInfo, instance : Object) : void;
+		function buildGraph() : HashTable;
 	}
 }

@@ -1,15 +1,16 @@
-package Configuration.DSL
+package com.composair.configuration.dsl
 {
-	import flash.utils.Dictionary;
+	import com.composair.HashTable;
 	
 	import org.spicefactory.lib.reflect.ClassInfo;
+	import org.spicefactory.lib.reflect.types.Void;
 	
 	public class InitializationExpression implements IInitializationExpression
 	{
-		private var _typeDictionary : Dictionary;
+		private var _typeDictionary : HashTable;
 		public function InitializationExpression()
 		{
-			_typeDictionary = new Dictionary(false);
+			_typeDictionary = new HashTable();
 		}
  
 		public function For(pluginType : ClassInfo) : GenericFamilyExpression
@@ -19,10 +20,15 @@ package Configuration.DSL
  
 		public function Register(pluginType : ClassInfo, concreteType : ClassInfo) : void
 		{
-			_typeDictionary[pluginType.name] = concreteType;
+			_typeDictionary.addItem(pluginType.name, concreteType);
 		}
  
-		public function buildGraph() : Dictionary
+ 		public function RegisterInstance(pluginType : ClassInfo, instance : Object) : void
+ 		{
+ 			_typeDictionary.addItem(pluginType.name, instance);
+ 		}
+ 
+		public function buildGraph() : HashTable
 		{
 			return _typeDictionary;
 		}

@@ -1,4 +1,4 @@
-package Configuration.DSL
+package com.composair.configuration.dsl
 {
 	import flash.utils.describeType;
 	

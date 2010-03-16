@@ -1,6 +1,7 @@
-package {
-	import Configuration.DSL.IInitializationExpression;
-	import Configuration.DSL.InitializationExpression;
+package com.composair
+{
+	import com.composair.configuration.dsl.IInitializationExpression;
+	import com.composair.configuration.dsl.InitializationExpression;
 	
 	import org.spicefactory.lib.reflect.ClassInfo;
 	
@@ -21,6 +22,11 @@ package {
 			expression.apply(scope, args);
 			
 			_container = new Container(initializationExpression.buildGraph());
+		}
+		
+		public static function getContainer() : IContainer
+		{
+			return _container;
 		}
 		
 		public static function getInstance(pluginType : ClassInfo) : Object
